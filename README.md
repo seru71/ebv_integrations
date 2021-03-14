@@ -2,6 +2,23 @@
 
 Script indentifying pairs of reads that map to EBV genome (NC_007605) and one of human chromosomes, and clustering them into integration hotspots (on chromosomes) and donor-clusters (on EBV genome).
 
+## Pipeline
+
+1. Select reads mapping to NC_007605 with MQ>=30, and being either:
+  
+  a) split between NC_007605 and another contig
+  
+  b) discordant with mate mapping to reference contig other than NC_007605
+  
+2. Cluster reads based on mapping position to the chromosome (integration hotspots). Reads are clustered if:
+
+  a) distance between consecutive mapping positions is <= 1kb, and
+   
+  b) at least 6 such reads are found
+   
+3. Within each integration hotspot, cluster mapping positions on EBV genome to identify "donor clusters". 
+   The same criteria as above are used to group reads into clusters.
+
 ## Usage
 
 `python3 get_cluster_pairs.py BAM_FILE > result.tsv`
@@ -22,3 +39,7 @@ Table columns:
 
 Read counts in the clusters should be normalized by the total number of reads in a given sample. 
 Data for it can be found in `data/*.bas` files.
+
+## Requirements
+ - pysam
+ - pandas
