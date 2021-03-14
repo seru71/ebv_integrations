@@ -6,15 +6,15 @@ Script indentifying pairs of reads that map to EBV genome (NC_007605) and one of
 
 1. Select reads mapping to NC_007605 with MQ>=30, and being either:
   
-  a) split between NC_007605 and another contig
+   a) split between NC_007605 and another contig
   
-  b) discordant with mate mapping to reference contig other than NC_007605
+   b) discordant with mate mapping to reference contig other than NC_007605
   
 2. Cluster reads based on mapping position to the chromosome (integration hotspots). Reads are clustered if:
 
-  a) distance between consecutive mapping positions is <= 1kb, and
+   a) distance between consecutive mapping positions is <= 1kb, and
    
-  b) at least 6 such reads are found
+   b) at least 6 such reads are found
    
 3. Within each integration hotspot, cluster mapping positions on EBV genome to identify "donor clusters". 
    The same criteria as above are used to group reads into clusters.
