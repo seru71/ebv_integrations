@@ -1,10 +1,7 @@
 import pandas as pd
 import sys
 
-infile = sys.argv[1]
-outfile = infile[:-len('clustered_reads.tsv')] + 'clusters.tsv'
-print('Reading', infile)
-t = pd.read_csv(infile, sep='\t')
+t = pd.read_csv(sys.argv[1], sep='\t')
 
 # get fragments clustered on both ends
 t = t[t['integr_hotspot'].notna()]
@@ -32,6 +29,5 @@ t2 = pd.DataFrame({'hotspot': t2.iloc[:,1],
 # merge
 result = pd.merge(left=t1, right=t2, left_on='hotspot', right_on='hotspot')
 
-# save
-print('Writing', outfile)
-result.to_csv(outfile, sep='\t', index=False)
+# and write to stdout
+result.to_csv(sys.stdout, sep='\t', index=False)

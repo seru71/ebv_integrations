@@ -35,6 +35,14 @@ Table columns:
  - `pos2` - position on NC_007605 where the read mapped 
  - `EBV_cluster` - id of the "donor cluster", incuding name of the linked chromosome and a consecutive number. If empty the read was not included in any cluster on EBV genome
 
+## Aggregate result
+
+To obtain aggregate fragment counts and coordinates of hotspot and EBV clusters, run:
+
+`pyton3 cluster.py results.tsv > result_aggregate.tsv`
+
+where result.tsv is the output of _get_cluster_pairs.py_.
+
 ## Notes
 
 Read counts in the clusters should be normalized by the total number of reads in a given sample. 
